@@ -1,21 +1,63 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+    firstName: "Nicola",
+    lastName: "Tournay",
+    country: "Belgium",
+    occupation: "Aspiring Frontend Developer",
+    hobbies: ["reading", "writing", "sucking at crossfit", "coding"],
+};
+
+const skills = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Vue",
+    "Astro (hopefully)",
+    "WordPress",
+];
+
+const happy = true;
+const finished = false;
+const goal = 2;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>About</title>
-	</head>
-	<body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+    </head>
+    <body>
         <a href="/">Home</a>
         <a href="/blog">Blog</a>
-		<a href="/about">About</a>
-		<h1>About Me</h1>
-        <p>Hi! <br>My name is Nicola Tournay <br>and I'm honing my frontend dev skills with Astro.</p>
-        <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-	</body>
+        <a href="/about">About</a>
+        <h1>{pageTitle}</h1>
+        <p>
+            Hi! <br />My name is {identity.firstName}
+            {identity.lastName}, I live in {identity.country}, I'm an {identity.occupation}
+            <br />and I'm honing my frontend dev skills with Astro.
+        </p>
+        <p>
+            This site will update as I complete more of the tutorial, so keep
+            checking back and see how my journey is going!
+        </p>
+        <h2>My skills</h2>
+        <ul>
+            {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+        <h2>My hobbies</h2>
+        <ul>
+            {identity.hobbies.map((hobby) => <li>{hobby}</li>)}
+        </ul>
+
+        {happy && <p>I am happy to be learning Astro!</p>}
+
+        {finished && <p>I finished this tutorial!</p>}
+
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+    </body>
 </html>
